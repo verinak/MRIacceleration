@@ -45,7 +45,8 @@ class CartesianKspaceGenerator:
     def forward(self, file_name: str = None):
         cm = self.coilmaps.rndraw_maps(1)
         mask = self.mask.rndraw_samplings(1).transpose(-1, -2)
+        self.kspace_og = cartesian_forward(self.image, cm, mask=None).squeeze(0)
         self.kspace = cartesian_forward(self.image, cm, mask).squeeze(0)
         if file_name is not None:
             torch.save(self.kspace, file_name + '.pt')
-        return self.kspace
+        return self.kspace_og, self.kspace, cm, mask
