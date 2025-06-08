@@ -29,7 +29,7 @@ class Sampling:
         self._filename = filename
 
     def generate_poisson_disk(self, img_shape: Tuple[int, ...], accel: float, K: float = 30, calib: Tuple[int] = (0, 0),
-                              dtype=np.complex, crop_corner: bool = True, return_density: bool = False,
+                              dtype=np.complex128, crop_corner: bool = True, return_density: bool = False,
                               seed: int = 0) -> None:
         """Call sigpy.mri.samp.poisson and save return value to numpy array."""
 
