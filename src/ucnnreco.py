@@ -155,7 +155,7 @@ class CartesianScampi(UcnnReco):
         self.x = torch.rand((1, input_dim, *input_shape)).to(self.device).to(self.dtype)
         self.dl = DipDataset(self.x, self.target)
 
-    def prep_model(self, type='knee'):
+    def prep_model(self, mtype='knee'):
         #self.model = CScampiModel.DipUnet(self.n_channels, self.n_channels, self.sampling_mask, produce=False,
         #                                  apply_data_consistency=True, k0=self.target,
         #                                  coilmap=self.coilmap, skip_connections=self.recopars['skip_connections']).to(
@@ -163,7 +163,7 @@ class CartesianScampi(UcnnReco):
         input_dim = 16  # for example
         input_shape = (8, 4)
         out_size = (self.dim[1], self.dim[2]) 
-        if type == 'brain':
+        if mtype == 'brain':
             num_layers=5
             num_channels=64
         else:
