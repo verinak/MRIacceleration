@@ -1,3 +1,13 @@
+import torch
+
+if torch.cuda.is_available():
+    device = torch.device('cuda:0')
+    torch.cuda.set_device(device)
+    print("Using GPU:", torch.cuda.get_device_name(device))
+else:
+    device = torch.device('cpu')
+    print("Using CPU")
+
 import fastmri
 from fastmri.data import transforms as T
 import h5py
